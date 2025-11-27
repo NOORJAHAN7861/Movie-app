@@ -1,16 +1,17 @@
 import React from 'react'
 import Navbar from './Navbar'
-import {Outlet} from 'react-router-dom'
-import Footer from './Footer'
+import { Outlet } from 'react-router'
+import Footer from './Footer.jsx'
+
 function Layout() {
   return (
-   <>
-   <Navbar/>
-   <main className="w-full min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100">
-   <Outlet/>
-   </main>
-   <Footer/>
-   </>
+    <>
+        <Navbar />
+        <main className="w-full min-h-screen bg-gray-900 text-white px-4 py-8">
+            <Outlet />
+        </main>
+        <Footer />
+    </>
   )
 }
 

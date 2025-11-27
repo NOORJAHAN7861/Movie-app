@@ -1,124 +1,58 @@
-import React, { useState } from "react";
+import React from 'react';
 
-export default function Footer() {
-    const [email, setEmail] = useState("");
-    const [subscribed, setSubscribed] = useState(false);
+const SocialLink = ({ href = '#', children, label }) => (
+    <a href={href} className="text-gray-300 hover:text-white transition" aria-label={label}>
+        {children}
+    </a>
+);
+
+const Footer = () => {
     const year = new Date().getFullYear();
 
-    const handleSubscribe = (e) => {
-        e.preventDefault();
-        if (!email) return;
-        // placeholder for real subscription logic
-        setSubscribed(true);
-        setEmail("");
-        setTimeout(() => setSubscribed(false), 4000);
-    };
-
     return (
-        <footer className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-slate-200">
-            <div className="max-w-7xl mx-auto px-6 py-12 sm:py-16">
-                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-                    {/* Brand / Logo */}
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center shadow-lg">
-                            <svg
-                                className="w-7 h-7 text-white"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden
-                            >
-                                <path d="M3 12h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M3 6h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-                                <path d="M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-semibold">Aurora UI</h3>
-                            <p className="text-sm text-slate-300">Design-forward React components</p>
+        <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-200 py-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    <div>
+                        <h3 className="text-2xl font-bold text-white">MovieApp</h3>
+                        <p className="text-gray-400 mt-2">Your ultimate movie companion. Discover, track and share your favorites.</p>
+                        <div className="flex items-center gap-3 mt-4">
+                            <SocialLink href="#" label="Follow on Twitter">
+                                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 5.92c-.64.29-1.32.49-2.04.58.73-.44 1.29-1.14 1.56-1.98-.69.41-1.46.7-2.28.86A3.49 3.49 0 0015.5 4c-1.92 0-3.48 1.6-3.48 3.57 0 .28.03.55.09.81C8.1 8.2 4.25 6.13 1.67 3.15c-.31.54-.49 1.17-.49 1.84 0 1.27.65 2.39 1.64 3.05-.6-.02-1.17-.18-1.66-.45v.05c0 1.77 1.22 3.25 2.83 3.59-.3.08-.62.12-.95.12-.23 0-.46-.02-.68-.06.46 1.45 1.8 2.5 3.38 2.53A7.02 7.02 0 010 19.54 9.9 9.9 0 005.36 21c6.43 0 9.95-5.88 9.95-10.97v-.5c.68-.5 1.27-1.12 1.74-1.83-.63.28-1.3.48-2 .57z"/></svg>
+                            </SocialLink>
+                            <SocialLink href="#" label="Follow on Github">
+                                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.75 5.48.75 11.75c0 4.96 3.19 9.16 7.61 10.64.56.1.77-.24.77-.54 0-.27-.01-1.16-.02-2.1-3.09.67-3.74-1.45-3.74-1.45-.5-1.29-1.22-1.64-1.22-1.64-.99-.68.07-.67.07-.67 1.1.08 1.68 1.14 1.68 1.14.97 1.66 2.54 1.18 3.16.9.1-.7.38-1.18.69-1.45-2.47-.28-5.07-1.24-5.07-5.52 0-1.22.43-2.21 1.14-2.99-.12-.28-.5-1.4.11-2.92 0 0 .93-.3 3.05 1.14a10.6 10.6 0 012.78-.37c.94 0 1.89.13 2.78.37 2.12-1.44 3.05-1.14 3.05-1.14.61 1.52.23 2.64.11 2.92.71.78 1.14 1.77 1.14 2.99 0 4.29-2.61 5.24-5.09 5.52.39.34.74 1.02.74 2.06 0 1.49-.01 2.69-.01 3.05 0 .3.21.65.78.54 4.42-1.49 7.61-5.69 7.61-10.64C23.25 5.48 18.27.5 12 .5z"/></svg>
+                            </SocialLink>
                         </div>
                     </div>
 
-                    {/* Links */}
-                    <nav className="flex gap-8 flex-wrap">
-                        <div>
-                            <h4 className="text-sm font-medium text-slate-300 mb-3">Product</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a className="hover:text-white transition-colors" href="#">Features</a></li>
-                                <li><a className="hover:text-white transition-colors" href="#">Pricing</a></li>
-                                <li><a className="hover:text-white transition-colors" href="#">Docs</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="text-sm font-medium text-slate-300 mb-3">Company</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a className="hover:text-white transition-colors" href="#">About</a></li>
-                                <li><a className="hover:text-white transition-colors" href="#">Careers</a></li>
-                                <li><a className="hover:text-white transition-colors" href="#">Blog</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="text-sm font-medium text-slate-300 mb-3">Resources</h4>
-                            <ul className="space-y-2 text-sm">
-                                <li><a className="hover:text-white transition-colors" href="#">Support</a></li>
-                                <li><a className="hover:text-white transition-colors" href="#">API</a></li>
-                                <li><a className="hover:text-white transition-colors" href="#">Status</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+                    <div>
+                        <h4 className="text-lg font-semibold text-white">Quick links</h4>
+                        <ul className="mt-4 space-y-2 text-gray-300">
+                            <li><a href="#" className="hover:text-white">Home</a></li>
+                            <li><a href="#" className="hover:text-white">Movies</a></li>
+                            <li><a href="#" className="hover:text-white">Genres</a></li>
+                            <li><a href="#" className="hover:text-white">Favorites</a></li>
+                        </ul>
+                    </div>
 
-                    {/* Newsletter */}
-                    <div className="w-full max-w-sm">
-                        <h4 className="text-sm font-medium text-slate-300 mb-3">Stay in the loop</h4>
-                        <form onSubmit={handleSubscribe} className="flex gap-2">
-                            <label htmlFor="footer-email" className="sr-only">Email address</label>
-                            <input
-                                id="footer-email"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Your email"
-                                className="flex-1 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                required
-                                aria-label="Email address"
-                            />
-                            <button
-                                type="submit"
-                                className="px-4 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-colors text-white font-semibold"
-                            >
-                                Subscribe
-                            </button>
+                    <div>
+                        <h4 className="text-lg font-semibold text-white">Stay up to date</h4>
+                        <p className="text-gray-400 mt-2">Subscribe to our newsletter for the latest releases and deals.</p>
+                        <form className="mt-4 flex max-w-sm">
+                            <label htmlFor="email" className="sr-only">Email address</label>
+                            <input id="email" type="email" placeholder="you@domain.com" className="w-full px-3 py-2 rounded-l-md bg-gray-800 text-gray-100 placeholder-gray-400 focus:outline-none" />
+                            <button type="submit" className="px-4 bg-yellow-400 text-gray-900 font-semibold rounded-r-md hover:brightness-95">Subscribe</button>
                         </form>
-                        {subscribed && (
-                            <p className="mt-3 text-sm text-green-400">Thanks for subscribing — check your inbox!</p>
-                        )}
                     </div>
                 </div>
 
-                <div className="border-t border-slate-700 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-sm text-slate-400">© {year} Aurora UI. All rights reserved.</p>
-                    <div className="flex items-center gap-4">
-                        <div className="flex gap-3">
-                            <a href="#" className="p-2 rounded-full hover:bg-slate-800 transition-colors" aria-label="Twitter">
-                                <svg className="w-5 h-5 text-slate-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                                    <path d="M8 19c7.333 0 11.333-6.084 11.333-11.333 0-.173 0-.347-.012-.519A8.116 8.116 0 0 0 20 4.7a8.14 8.14 0 0 1-2.357.646A4.118 4.118 0 0 0 19.447 3a8.224 8.224 0 0 1-2.605.996A4.107 4.107 0 0 0 9.85 7.03 11.65 11.65 0 0 1 3.157 2.9a4.106 4.106 0 0 0 1.27 5.48A4.07 4.07 0 0 1 2.8 7.6v.052a4.109 4.109 0 0 0 3.292 4.028 4.095 4.095 0 0 1-1.852.07 4.113 4.113 0 0 0 3.834 2.85A8.234 8.234 0 0 1 2 17.54 11.616 11.616 0 0 0 8 19z" />
-                                </svg>
-                            </a>
-                            <a href="#" className="p-2 rounded-full hover:bg-slate-800 transition-colors" aria-label="GitHub">
-                                <svg className="w-5 h-5 text-slate-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                                    <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.1c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.74.08-.74 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.77.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5z" />
-                                </svg>
-                            </a>
-                            <a href="#" className="p-2 rounded-full hover:bg-slate-800 transition-colors" aria-label="LinkedIn">
-                                <svg className="w-5 h-5 text-slate-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                                    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001zM3 9h4v12H3zM9 9h3.8v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.5V21H17v-5.1c0-1.2 0-2.8-1.7-2.8-1.7 0-1.9 1.3-1.9 2.7V21H9V9z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <a className="text-sm text-slate-400 hover:text-white transition-colors" href="#">Privacy · Terms</a>
-                    </div>
+                <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-400">
+                    <p>&copy; {year} MovieApp. All rights reserved.</p>
                 </div>
             </div>
         </footer>
     );
-}
+};
+
+export default Footer;

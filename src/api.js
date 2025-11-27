@@ -1,5 +1,7 @@
+let baseUrl = "https://www.omdbapi.com/?i=tt3896198&apikey=aae8d79a"
+
 const api ={
-    baseurl: "https://www.omdbapi.com/?i=tt3896198&apikey=aae8d79a",
+    
    
    getMovieData: (query)=>{
 
@@ -13,8 +15,8 @@ const api ={
             queryStr += `i=${query.i}&`;
         }
        
-    let url = `${api.baseUrl}${queryStr}`;
-    return fetch(url).then((res)=>Response.json);
+    let url = `${baseUrl}${queryStr}`;
+    return fetch(url).then((res)=>res.json());
         },
         };
 export default api;

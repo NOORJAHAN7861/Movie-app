@@ -1,19 +1,19 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import { BrowserRouter } from 'react-router-dom';
+// src/App.jsx
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./components/Auth/Login";
+// ...other imports
 
-function App() {
-  
-    return (
-  <>
+export default function App() {
+  return (
+    <BrowserRouter>        {/* single router here if main.jsx doesn't include it */}
+      {/* Navbar, ErrorBoundary, Routes */}
       <Routes>
-        <Route path="/" element={<Layout />}>
-        <Route index element={<Home/>} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        {/* ... */}
       </Routes>
-  </>
-  )
+    </BrowserRouter>
+  );
 }
-
-export default App
